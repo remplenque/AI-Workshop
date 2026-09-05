@@ -1,0 +1,17 @@
+# Installed environments
+.venv/
+venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Library caches - too large to ship, regenerated on demand
+data/cache/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Course-supplied assignment instructions, not part of the submission
+LAB_0_VicenteRodríguez/

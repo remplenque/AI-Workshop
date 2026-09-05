@@ -1,0 +1,14 @@
+# IIT414W Lab 0 - environment actually used for the submitted runs.
+# Observed on Linux, Python 3.13.5 (Anaconda), 4 September 2026.
+# Deliberate install only; the notebooks never install anything.
+#
+#   python -m pip install -r requirements.txt
+#   python -m ipykernel install --user --name iit414w --display-name "Python (IIT414W)"
+#
+# pandas + ipykernel are required by every route.
+# requests + fastf1 are required because the submitted runs use MODE = "live".
+pandas==2.2.3
+numpy==2.1.3
+requests==2.32.3
+fastf1==3.8.3
+ipykernel==6.29.5
