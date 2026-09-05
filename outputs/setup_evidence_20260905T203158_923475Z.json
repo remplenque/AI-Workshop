@@ -1,0 +1,67 @@
+{
+  "created_utc": "2026-09-05T20:31:58.923475+00:00",
+  "random_seed": 414,
+  "technical_status": "READY",
+  "student_status": "Ready",
+  "student_next_action": "Complete the written fields in both notebooks, restart the kernel and run all cells, then commit to a public repository and package the Lab 0 ZIP before 10 September 2026 12:30.",
+  "health_checks": [
+    {
+      "check": "Python 3.10+",
+      "status": "PASS",
+      "evidence": "3.13.5 on Linux",
+      "next_action": "Install or activate Python 3.10+ and select that interpreter as the notebook kernel."
+    },
+    {
+      "check": "Jupyter kernel",
+      "status": "PASS",
+      "evidence": "Active shell: ZMQInteractiveShell",
+      "next_action": "Open this file in Jupyter or JupyterLab, select a Python kernel, and run this cell again."
+    },
+    {
+      "check": "Git available",
+      "status": "PASS",
+      "evidence": "git version 2.53.0",
+      "next_action": "Install Git, restart Jupyter, and run this cell again. Do not paste credentials into this notebook."
+    }
+  ],
+  "package_checks": [
+    {
+      "package": "ipykernel",
+      "when_needed": "Needed today",
+      "available": true,
+      "version": "6.29.5",
+      "purpose": "Runs the selected Python notebook kernel."
+    },
+    {
+      "package": "numpy",
+      "when_needed": "Optional today",
+      "available": true,
+      "version": "2.1.3",
+      "purpose": "Useful later; the offline example below does not require it."
+    },
+    {
+      "package": "pandas",
+      "when_needed": "Prepare for Friday",
+      "available": true,
+      "version": "2.2.3",
+      "purpose": "Used for tabular F1 data work."
+    },
+    {
+      "package": "requests",
+      "when_needed": "Prepare for Friday",
+      "available": true,
+      "version": "2.32.3",
+      "purpose": "Useful for documented HTTP data access."
+    },
+    {
+      "package": "fastf1",
+      "when_needed": "Prepare for Friday",
+      "available": true,
+      "version": "3.8.3",
+      "purpose": "F1 data ecosystem session; not used today."
+    }
+  ],
+  "synthetic_sample_match": true,
+  "restart_and_run_all": "NOT CHECKED - complete this from a freshly restarted kernel.",
+  "privacy_note": "No tokens, usernames, email addresses, Git history, or personal paths are recorded."
+}
