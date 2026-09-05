@@ -3,7 +3,7 @@
 Vicente Rodríguez · Individual submission · Unit I, Week 1
 
 **Repository:** `https://github.com/remplenque/AI-Workshop` (public, deliberately — the package contains no tokens, credentials or personal data)
-**Submitted commit:** `93425402921255a90c0ddf9ed595cd9cbe4fa950` — the last commit on `main` at submission time.
+**Submitted commit:** `33a864dcdf36a41bcb60c9fab1a6f736b9192ac7` — the commit containing all submitted code, notebooks and explanations. The only later commit on `main` is the one that writes this ID into the README, which cannot reference itself.
 
 ---
 
@@ -31,7 +31,9 @@ python -m pip install -r requirements.txt
 python -m ipykernel install --user --name iit414w --display-name "Python (IIT414W)"
 ```
 
-The notebooks never install anything themselves. Select the kernel above before running.
+The notebooks never install anything themselves.
+
+A note on the kernel name: I ran these notebooks on my existing Anaconda base environment, which my editor lists as `base` (full label `base (Python 3.13.5) ~/anaconda3/bin/python`), and that is the name recorded in `metadata.kernelspec` in both notebooks. The `ipykernel install` line above registers a separate, clearly named kernel for anyone reproducing this from scratch. Either works — what matters is that the interpreter matches the pins in `requirements.txt`.
 
 ## 2 · Layout and entry points
 
