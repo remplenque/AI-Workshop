@@ -2,8 +2,8 @@
 
 Vicente Rodríguez · Individual submission · Unit I, Week 1
 
-**Repository:** `<<REPO_URL>>` (public, deliberately — the package contains no tokens, credentials or personal data)
-**Submitted commit:** `<<COMMIT_ID>>` — the last commit on `main` at submission time.
+**Repository:** `https://github.com/remplenque/AI-Workshop` (public, deliberately — the package contains no tokens, credentials or personal data)
+**Submitted commit:** `93425402921255a90c0ddf9ed595cd9cbe4fa950` — the last commit on `main` at submission time.
 
 ---
 
@@ -12,7 +12,7 @@ Vicente Rodríguez · Individual submission · Unit I, Week 1
 | Item | Observed value |
 |---|---|
 | Python | 3.13.5 (Anaconda distribution, Linux) |
-| Kernel selected | `<<KERNEL_DISPLAY_NAME>>` |
+| Kernel selected | `base` |
 | pandas | 2.2.3 |
 | numpy | 2.1.3 |
 | requests | 2.32.3 |
@@ -40,7 +40,10 @@ The notebooks never install anything themselves. Select the kernel above before 
 ├── README.md                  <- you are here
 ├── PROMPTS.md                 <- AI-use record (single location)
 ├── requirements.txt           <- dependency file for this submission
+├── requirements_w01_fri_v1.txt<- lecturer's reference pins; NOT this environment (see §1)
+├── .gitignore
 ├── .iit414w-root              <- project root marker (hidden; required by both notebooks)
+├── START_HERE_W01_Fri_v2.md   <- supplied course entry page
 ├── unit_I/week_01/
 │   ├── W01_Thu_setup_and_reproducibility_v2.ipynb   <- run FIRST
 │   ├── W01_Fri_f1_data_ecosystem_v1.ipynb           <- run SECOND
@@ -80,12 +83,9 @@ I saved the notebooks, used **Restart Kernel and Run All Cells** on each in the 
 | Run | Folder | Notes |
 |---|---|---|
 | Class run, 4 Sep | `outputs/w01_fri_20260904T153933_555050Z_f37be2/` | live route |
-| Final run | `<<FINAL_RUN_FOLDER>>` | live route, clean restart/run-all |
-| Repeat run | `<<REPEAT_RUN_FOLDER>>` | export cell re-run immediately after |
+| Final run, 5 Sep | `outputs/w01_fri_20260905T221501_963380Z_1b4d38/` | live route, clean restart/run-all |
 
-`<<HASH_VERDICT>>`
-
-Folder names and timestamps differ by design. The `files_sha256` block in each `run_manifest.json` is what I compared. A live endpoint may legitimately revise its data between calls — a hash difference there is documented, not forced to match.
+The `files_sha256` blocks of the two runs are identical for all three files (`results.csv`, `checks.csv`, `laps.csv`), across runs a day apart. Folder names and `created_utc` differ, as expected. The live endpoint returned the same data on both occasions, so no difference had to be reconciled. A live endpoint may legitimately revise its data between calls; a hash difference there is documented, not forced to match.
 
 ---
 
@@ -118,7 +118,7 @@ A WARNING or a REVIEW row is not a failure. `Missing lap times` (35) and `Grid z
 
 **Decision:** I kept `MODE = "live"` for the submitted runs rather than switching to `MODE = "snapshot"`, because the live route is what my machine actually did and its provenance is recorded honestly. The snapshot files are shipped as the documented fallback so the package still works without network.
 
-**Correction made after self-review:** my first cell-7 answer identified the row as "the 3rd row" and stated that the driver "overtook 16 drivers". Both were wrong against the data dictionary — a row index is not a reliable key, and the table records no overtakes. I rewrote it to identify the row by `driver_id = 'bottas'` / `driver_number = '77'` and to say "16 classified places gained", noting that five of twenty entries did not finish normally. I had also recorded only the results provenance, which implied `api_access_confirmed: true` covered both tables; the answer now reports each table's origin separately.
+**Correction made after self-review:** my first answer to the source question pasted the `JOLPICA_HTTP` provenance and stopped there. It gave no limitation, and it said nothing about where the lap table came from, so a reader could reasonably take `api_access_confirmed: true` as covering both tables. It does not — the laps came from `FASTF1_SESSION`, whose provenance reads `"NOT VERIFIED: library may use cache"`. I added a limitations block that reports the two origins separately and states what a single complete page does and does not establish. In the same pass I made explicit that Bottas's 16 classified places gained are not 16 overtakes: the table records no overtakes, and five of the twenty entries did not finish normally.
 
 **How I verified it:** I re-ran the independent check against the supplied snapshot and compared the two lap tables. My live run: 891 rows, 19 drivers. Snapshot: 892 rows, 20 drivers. The extra row is tsunoda's lap 1 with an empty `lap_time_s` and `is_accurate = False`. My FastF1 is 3.8.3; the snapshot manifest was captured on 3.5.3. **Limit:** this identifies the library version as the difference between the two tables; it does not establish which of the two is the more faithful record of the session, and neither was checked against an official classification.
 

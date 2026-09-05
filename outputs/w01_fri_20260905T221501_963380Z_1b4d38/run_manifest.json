@@ -17,14 +17,14 @@
       "url": "https://api.jolpi.ca/ergast/f1/2021/circuits/monza/results/",
       "pages": 1,
       "total": 20,
-      "retrieved_utc": "2026-09-05T20:42:56.980709+00:00"
+      "retrieved_utc": "2026-09-05T22:14:56.518138+00:00"
     },
     "laps": {
       "origin": "FASTF1_SESSION",
       "api_access_confirmed": "NOT VERIFIED: library may use cache",
       "provider": "FastF1",
       "session": "2021 Italy R",
-      "retrieved_utc": "2026-09-05T20:43:11.511178+00:00",
+      "retrieved_utc": "2026-09-05T22:15:01.847650+00:00",
       "telemetry_loaded": false,
       "weather_loaded": false
     }
@@ -34,7 +34,7 @@
     "checks.csv": "959e02b3452a688cf0d0f84e83b20971652c80d7e46c82c1cbaba9c6ee99e959",
     "laps.csv": "564bc9a100c8f40cec69ae4fa6a5b6f4e6147d92278d6685a2f2aa5cd2902094"
   },
-  "created_utc": "2026-09-05T20:43:11.767226+00:00",
+  "created_utc": "2026-09-05T22:15:02.015172+00:00",
   "student_interpretation": "NOT RECORDED BY AUTOMATION",
   "student_restart_run_all": "NOT VERIFIED BY THIS CELL"
 }

@@ -1,6 +1,6 @@
 # PROMPTS.md · AI-use log
 
-Activity: IIT414W Lab 0 · Reproducible setup · Date: 2026-09-04 · Author: Vicente Rodríguez
+Activity: IIT414W Lab 0 · Reproducible setup · Dates: 2026-09-04 to 2026-09-05 · Author: Vicente Rodríguez
 
 AI use: **Used.** Recorded here in one location; the README links to this file and does not repeat it.
 
@@ -8,7 +8,7 @@ AI use: **Used.** Recorded here in one location; the README links to this file a
 
 | Tool | Model/version, if known | Purpose |
 |---|---|---|
-| Claude Code (CLI, in VS Code) | Reported as Claude Opus 5. I could not independently verify the model version, so I record it as reported, not as confirmed. | (1) Explaining the Lab 0 brief and rubric so I knew which fields were still empty. (2) Drafting the independent-check cell in the Friday notebook and the packaging files. |
+| Claude Code (CLI, in VS Code) | Reported as Claude Opus 5. I could not independently verify the model version, so I record it as reported, not as confirmed. | (1) Explaining the Lab 0 brief and rubric so I knew which fields were still empty. (2) Drafting the independent-check cell in the Friday notebook and the packaging files. (3) Reviewing the finished package against the rubric before I committed it. |
 
 ## Interaction log
 
@@ -23,18 +23,7 @@ AI use: **Used.** Recorded here in one location; the README links to this file a
 7. **Verification:** I checked the claimed gaps directly against my own folder listing before acting on any of them, and I read the rubric descriptors in `handouts/Lab0_Rubric.md` myself rather than relying on the summary.
 8. **Limitations:** Understanding the rubric is not the same as satisfying it. Nothing in this entry produced evidence; the evidence comes from my own executed notebooks.
 
-### Entry 2 · Drafting the independent check (Friday notebook)
-
-1. **Context:** The Friday notebook asks for one computed check of my own that the supplied `quality_checks()` helper does not already run. I knew what I wanted to test — whether `driver_number` really links the results and lap tables — but wanted a second opinion on whether that duplicated an existing check.
-2. **Prompt sent:** Faithful summary — I asked for a check that was not already covered by the helper's seven checks, computed from the tables rather than hardcoded, and I asked it to draft the code cell and the three written answers.
-3. **Output received:** A short pandas cell comparing `set(results["driver_number"])` against `set(laps["driver_number"])` and printing both counts plus the difference, together with draft prose for the three written fields.
-4. **What I accepted and why:** The code. It does what the cell asks — it computes from the tables, prints an observed result rather than a literal `True`, and tests something none of the seven supplied checks tests, since the helper never compares the two tables against each other.
-5. **What I modified and why:** The written answers. I rewrote all three in my own words and added the cross-route limitation I found myself: the same check returns `[]` on the supplied snapshot because that capture used FastF1 3.5.3 while I run 3.8.3. The draft treated the result as a single-route observation; the version difference is the more useful point. I also corrected my own earlier cell-7 answer after this — see the "Decision and verification" note in the README.
-6. **What I rejected and why:** A longer version of the check that also printed each table's `season / round / circuit_id` scope. It was a second, unrelated question in one cell, and the cell asks for one check.
-7. **Verification:** I ran the cell myself in my own kernel and read the output: `Drivers in results: 20`, `Drivers in laps: 19`, `In results but no laps: ['22']`. I then looked up driver `22` in `results.csv` and confirmed `position_text = 'W'`, `grid = 0`, `status = 'Brakes'` — a withdrawal. I also read the FastF1 log printed by the lap cell, which says `Finished loading data for 20 drivers` and `Failed to perform lap accuracy check - all laps marked as inaccurate (driver 22)`, and I checked `fetch_fastf1` in the helper to confirm it copies `session.laps` without filtering — so the missing rows come from the library, not from my code. The output is saved in the executed notebook.
-8. **Limitations:** The check proves only that the lap driver set is a subset of the results driver set. It does not establish that the lap table is complete, and its answer depends on the FastF1 version, as the snapshot comparison shows.
-
-### Entry 3 · Drafting the packaging files
+### Entry 2 · Drafting the packaging files
 
 1. **Context:** I had no README, dependency file or `.gitignore`, and the brief requires a runbook with three specific evidence notes.
 2. **Prompt sent:** Faithful summary — I asked it to draft `requirements.txt`, `.gitignore` and a README containing the setup commands, kernel, notebook order, data mode, output locations and the three evidence notes, using my observed versions.
@@ -44,6 +33,17 @@ AI use: **Used.** Recorded here in one location; the README links to this file a
 6. **What I rejected and why:** Nothing substantive in this entry.
 7. **Verification:** I compared each pin in `requirements.txt` against the `versions` block of my own `run_manifest.json` and the `package_checks` block of my `setup_evidence` file: Python 3.13.5, pandas 2.2.3, numpy 2.1.3, requests 2.32.3, fastf1 3.8.3, ipykernel 6.29.5. They match.
 8. **Limitations:** The dependency file records what worked on my Linux/Anaconda machine. It is not evidence that these exact pins install cleanly on another operating system.
+
+### Entry 3 · Review pass before committing
+
+1. **Context:** Before packaging I wanted the whole submission checked against the rubric, rather than trusting that the pieces still agreed with each other after several rounds of editing.
+2. **Prompt sent:** Faithful summary — I asked it to verify every factual claim in the README, this file and both notebooks against my saved outputs, and to flag anything inconsistent, stale or missing.
+3. **Output received:** Four problems. My answer to the source question had no limitation and never said where the lap table came from. The README described a correction my notebook no longer contained. Three intermediate evidence runs were clutter. The README's run table pointed at a folder I was about to delete.
+4. **What I accepted and why:** All four. I confirmed each against the files before changing anything — the source answer really did stop at the pasted provenance, and the run table really did name a folder that no longer exists.
+5. **What I modified and why:** It drafted the limitations block for the source answer; I reworded it and kept the facts, because the wording had to match the rest of my notebook.
+6. **What I rejected and why:** A suggestion to identify the Bottas row by `driver_id` and `driver_number` instead of by position and team. I asked the lecturer, who said that was not the point of that question, so I kept my own row description.
+7. **Verification:** After the fixes I confirmed both notebooks still show execution counts `1`–`6`, that `outputs/` holds exactly the first and the latest run of each notebook, and that the README's run table names folders that exist on disk.
+8. **Limitations:** A review against the published rubric is not the lecturer's assessment, and it cannot tell me whether my explanations actually read as my own understanding.
 
 ## Summary reflection
 
