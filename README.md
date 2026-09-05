@@ -3,7 +3,7 @@
 Vicente Rodríguez · Individual submission · Unit I, Week 1
 
 **Repository:** `https://github.com/remplenque/AI-Workshop` (public, deliberately — the package contains no tokens, credentials or personal data)
-**Submitted commit:** `33a864dcdf36a41bcb60c9fab1a6f736b9192ac7` — the commit containing all submitted code, notebooks and explanations. The only later commit on `main` is the one that writes this ID into the README, which cannot reference itself.
+**Submitted commit:** `3276771564428a7d45f95e7edf735cb2993a2aac` — the commit containing all submitted code, notebooks and explanations. The only later commit on `main` is the one that writes this ID into the README, which cannot reference itself.
 
 ---
 
